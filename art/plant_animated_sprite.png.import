@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqjn0vwdj4d2"
-path="res://.godot/imported/redsamurai_sprites.png-ea286462ec9d6a5f80bb424e7d0853d0.ctex"
+uid="uid://dsix73h1mrhgy"
+path="res://.godot/imported/plant_animated_sprite.png-39e88ae40af8fec86c1516c15e585748.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/redsamurai_sprites.png"
-dest_files=["res://.godot/imported/redsamurai_sprites.png-ea286462ec9d6a5f80bb424e7d0853d0.ctex"]
+source_file="res://art/plant_animated_sprite.png"
+dest_files=["res://.godot/imported/plant_animated_sprite.png-39e88ae40af8fec86c1516c15e585748.ctex"]
 
 [params]
 
