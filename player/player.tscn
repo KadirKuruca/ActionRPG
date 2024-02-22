@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmhywd14aql47"]
+
+[ext_resource type="Texture2D" uid="uid://b4nqq0s87k3uw" path="res://art/samurai_sprites.png" id="1_7cene"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_a2o64"]
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_a2o64")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7cene")
+hframes = 4
+vframes = 7
