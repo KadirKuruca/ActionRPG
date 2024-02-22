@@ -1,13 +1,115 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmhywd14aql47"]
+[gd_scene load_steps=9 format=3 uid="uid://bmhywd14aql47"]
 
-[ext_resource type="Texture2D" uid="uid://b4nqq0s87k3uw" path="res://art/samurai_sprites.png" id="1_7cene"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_a2o64"]
+[ext_resource type="Texture2D" uid="uid://b21o3twu6tnfn" path="res://art/spirit_sprites.png" id="2_yr5ug"]
+
+[sub_resource type="Animation" id="Animation_10gue"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_jovqa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2j4g5"]
+resource_name = "walk_up"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_j62vo"]
+resource_name = "walk_left"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_smb7j"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m82iw"]
+_data = {
+"RESET": SubResource("Animation_jovqa"),
+"walk_down": SubResource("Animation_10gue"),
+"walk_left": SubResource("Animation_j62vo"),
+"walk_right": SubResource("Animation_smb7j"),
+"walk_up": SubResource("Animation_2j4g5")
+}
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_a2o64")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7cene")
+position = Vector2(0, -8)
+texture = ExtResource("2_yr5ug")
 hframes = 4
 vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m82iw")
+}
