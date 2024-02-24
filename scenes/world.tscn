@@ -2812,7 +2812,8 @@ texture = ExtResource("3_57y41")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.6875, -1.1875, 6.6875, -0.9375, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_kxlkh"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "sand"
 terrain_set_0/terrain_0/color = Color(0.513726, 0.262745, 0.584314, 1)
@@ -2850,6 +2851,13 @@ endPoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="TileMap/Skull2"]
 position = Vector2(-1, 41)
+
+[node name="Skull3" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("6_16c0i")]
+position = Vector2(195, 49)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/Skull3"]
+position = Vector2(60, -8)
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_hbr35")]
 z_index = 1

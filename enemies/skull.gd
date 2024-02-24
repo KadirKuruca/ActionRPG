@@ -25,11 +25,16 @@ func changeDirection():
 	startPosition = tempEnd
 	
 func updateAnimation():
-	var animationName = "walk_up"
-	if velocity.y > 0:
-		animationName = "walk_down"
-	
-	animated_sprite_2d.play(animationName)
+	if velocity.length() == 0:
+		if animated_sprite_2d.is_playing():
+			animated_sprite_2d.stop()
+	else:
+		var direction = "down"
+		if velocity.x < 0: direction = "left"
+		elif velocity.x > 0: direction = "right"
+		elif velocity.y < 0: direction = "up"
+		
+		animated_sprite_2d.play("walk_" + direction)
 
 func _physics_process(delta):
 	updateVelocity()
