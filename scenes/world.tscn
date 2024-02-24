@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwyeg6ro6rpme"]
+[gd_scene load_steps=12 format=3 uid="uid://bwyeg6ro6rpme"]
 
 [ext_resource type="PackedScene" uid="uid://bmhywd14aql47" path="res://player/player.tscn" id="1_hbr35"]
 [ext_resource type="Texture2D" uid="uid://b3562f864fe8g" path="res://art/TilesetFloor.png" id="1_o1d3q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/FollowCamera.gd" id="2_khphq"]
 [ext_resource type="Texture2D" uid="uid://dsix73h1mrhgy" path="res://art/plant_animated_sprite.png" id="3_57y41"]
 [ext_resource type="PackedScene" uid="uid://cdulkg04v0t0" path="res://enemies/skull.tscn" id="6_16c0i"]
+[ext_resource type="PackedScene" uid="uid://ck7nt03hwbjs6" path="res://gui/hearts_container.tscn" id="7_5f5wq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fshyp"]
 texture = ExtResource("1_o1d3q")
@@ -2869,3 +2870,14 @@ limit_left = 0
 limit_top = 0
 script = ExtResource("2_khphq")
 tilemap = NodePath("../..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("7_5f5wq")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_right = 0.0
+offset_bottom = 15.0
+grow_horizontal = 0
