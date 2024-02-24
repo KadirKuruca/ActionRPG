@@ -4,6 +4,7 @@ signal player_get_hit(current_health: int)
 
 @export var speed: int = 50
 @export var max_health = 3
+@export var knock_back_value = 700
 
 @onready var animation_player = $AnimationPlayer
 @onready var current_health = max_health
@@ -42,3 +43,9 @@ func _on_hurt_box_area_entered(area):
 			current_health = max_health
 			
 	player_get_hit.emit(current_health)
+	knock_back(area.get_parent().velocity)
+	
+func knock_back(enemy_velocity: Vector2):
+	var knock_back_direction = (enemy_velocity - velocity).normalized() * knock_back_value
+	velocity = knock_back_direction
+	move_and_slide()
