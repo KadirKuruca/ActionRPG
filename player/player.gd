@@ -8,6 +8,8 @@ signal player_get_hit(current_health: int)
 
 @onready var animation_player = $AnimationPlayer
 @onready var current_health = max_health
+@onready var effects = $Effects
+@onready var hurt_timer = $HurtTimer
 
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -29,6 +31,11 @@ func handleCollision():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
+
+func knock_back(enemy_velocity: Vector2):
+	var knock_back_direction = (enemy_velocity - velocity).normalized() * knock_back_value
+	velocity = knock_back_direction
+	move_and_slide()
 	
 func _physics_process(delta):
 	handleInput()
@@ -44,8 +51,10 @@ func _on_hurt_box_area_entered(area):
 			
 	player_get_hit.emit(current_health)
 	knock_back(area.get_parent().velocity)
+	handle_hurt_animations()
 	
-func knock_back(enemy_velocity: Vector2):
-	var knock_back_direction = (enemy_velocity - velocity).normalized() * knock_back_value
-	velocity = knock_back_direction
-	move_and_slide()
+func handle_hurt_animations():
+	effects.play("hurt_blink")
+	hurt_timer.start()
+	await hurt_timer.timeout
+	effects.play("RESET")
