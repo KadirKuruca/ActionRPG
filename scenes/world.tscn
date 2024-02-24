@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwyeg6ro6rpme"]
+[gd_scene load_steps=13 format=3 uid="uid://bwyeg6ro6rpme"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_festb"]
 [ext_resource type="PackedScene" uid="uid://bmhywd14aql47" path="res://player/player.tscn" id="1_hbr35"]
 [ext_resource type="Texture2D" uid="uid://b3562f864fe8g" path="res://art/TilesetFloor.png" id="1_o1d3q"]
 [ext_resource type="Texture2D" uid="uid://d0s278mvsm3ke" path="res://art/TilesetNature.png" id="2_3hhks"]
@@ -2824,6 +2825,7 @@ sources/2 = SubResource("TileSetAtlasSource_5gwou")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_festb")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -2877,7 +2879,6 @@ tilemap = NodePath("../..")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -52.0
-offset_right = 0.0
-offset_bottom = 15.0
 grow_horizontal = 0
+
+[connection signal="player_get_hit" from="TileMap/Player" to="." method="_on_player_player_get_hit"]

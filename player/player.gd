@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-@export var speed: int = 50
-@onready var animation_player = $AnimationPlayer
-@export var maxHealth = 3
+signal player_get_hit(current_health: int)
 
-@onready var currentHealth = maxHealth
+@export var speed: int = 50
+@export var max_health = 3
+
+@onready var animation_player = $AnimationPlayer
+@onready var current_health = max_health
 
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -33,10 +35,10 @@ func _physics_process(delta):
 	handleCollision()
 	updateAnimation()
 
-
 func _on_hurt_box_area_entered(area):
 	if area.name == "HitBox":
-		currentHealth -= 1
-		if currentHealth < 0:
-			currentHealth = maxHealth
-		print_debug(currentHealth)
+		current_health -= 1
+		if current_health < 0:
+			current_health = max_health
+			
+	player_get_hit.emit(current_health)
